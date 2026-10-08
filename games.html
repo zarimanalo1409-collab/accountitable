@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accounti-Table Games</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🎮 Accounti-Table
+    </div>
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="accountitable.html">Accounti-Table</a>
+        <a href="games.html">Games</a>
+        <a href="quizzes.html">Quiz</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+<section class="page-heading">
+
+    <p>LEARN THROUGH PLAY</p>
+
+    <h1>Accounting Games</h1>
+
+    <p>
+        Choose a game and test your accounting knowledge!
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     GAME CATEGORIES
+========================== -->
+
+<section id="gameMenu" class="game-menu">
+
+
+    <div class="game-choice">
+
+        <div>🔤</div>
+
+        <h2>Symbol Challenge</h2>
+
+        <p>
+            Identify the correct account title
+            from the abbreviation.
+        </p>
+
+        <button onclick="chooseGame('symbol')">
+            Play Now
+        </button>
+
+    </div>
+
+
+
+    <div class="game-choice">
+
+        <div>🧩</div>
+
+        <h2>Classification Challenge</h2>
+
+        <p>
+            Identify the correct classification
+            of each account.
+        </p>
+
+        <button onclick="chooseGame('classification')">
+            Play Now
+        </button>
+
+    </div>
+
+
+
+    <div class="game-choice">
+
+        <div>⚖️</div>
+
+        <h2>Accounting Equation</h2>
+
+        <p>
+            Solve accounting equation problems.
+        </p>
+
+        <button onclick="chooseGame('equation')">
+            Play Now
+        </button>
+
+    </div>
+
+
+
+    <div class="game-choice">
+
+        <div>💚</div>
+
+        <h2>Owner's Equity Challenge</h2>
+
+        <p>
+            Determine whether an account increases
+            or decreases Owner's Equity.
+        </p>
+
+        <button onclick="chooseGame('equity')">
+            Play Now
+        </button>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     PLAYER NAME
+========================== -->
+
+<section id="playerSection" class="game-area hidden">
+
+    <div class="player-box">
+
+        <h2>Before we start...</h2>
+
+        <p>
+            Enter your name to begin the game.
+        </p>
+
+        <input
+            type="text"
+            id="playerName"
+            placeholder="Enter your name"
+        >
+
+        <br>
+
+        <button onclick="startGame()">
+            Start Game →
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     GAME QUESTIONS
+========================== -->
+
+<section id="questionSection" class="game-area hidden">
+
+    <div class="game-panel">
+
+
+        <div class="game-top">
+
+            <span id="categoryName">
+                Game
+            </span>
+
+            <span id="scoreDisplay">
+                Score: 0
+            </span>
+
+        </div>
+
+
+        <div id="questionNumber"
+             class="question-number">
+            Question 1
+        </div>
+
+
+        <h2 id="questionText">
+            Question
+        </h2>
+
+
+        <div id="answerButtons"
+             class="answer-grid">
+
+        </div>
+
+
+        <p id="feedback"
+           class="feedback">
+        </p>
+
+
+        <button
+            id="nextButton"
+            class="next-btn hidden"
+            onclick="nextQuestion()">
+
+            Next →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     RESULT
+========================== -->
+
+<section id="resultSection"
+         class="game-area hidden">
+
+    <div class="result-box">
+
+        <h2>🎉 Game Complete!</h2>
+
+        <p id="resultText"></p>
+
+        <br>
+
+        <button onclick="location.reload()">
+            Play Again
+        </button>
+
+        <br><br>
+
+        <a href="index.html"
+           class="btn secondary">
+
+            Back to Dashboard
+
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+    <p>
+        © 2026 Accounti-Table Learning Hub
+    </p>
+
+    <p>
+        Learn • Practice • Understand • Apply
+    </p>
+
+</footer>
+
+
+
+<script>
+
+/* ==========================================
+   GAME QUESTIONS
+========================================== */
+
+
+const games = {
+
+
+/* ==========================================
+   SYMBOL CHALLENGE
+========================================== */
+
+symbol: [
+
+    {
+        question: "What does L stand for?",
+        answers: [
+            "Land",
+            "Loan",
+            "Liability",
+            "License"
+        ],
+        correct: "Land"
+    },
+
+
+    {
+        question: "What does AR stand for?",
+        answers: [
+            "Asset Revenue",
+            "Accounts Receivable",
+            "Accounts Revenue",
+            "Accrued Revenue"
+        ],
+        correct: "Accounts Receivable"
+    },
+
+
+    {
+        question: "What does AP stand for?",
+        answers: [
+            "Accounts Payable",
+            "Asset Payable",
+            "Accounts Purchase",
+            "Accrued Property"
+        ],
+        correct: "Accounts Payable"
+    },
+
+
+    {
+        question: "What does PCF stand for?",
+        answers: [
+            "Personal Cash Fund",
+            "Petty Cash Fund",
+            "Paid Cash Fund",
+            "Petty Credit Fund"
+        ],
+        correct: "Petty Cash Fund"
+    },
+
+
+    {
+        question: "What does NP stand for?",
+        answers: [
+            "Net Profit",
+            "Notes Payable",
+            "Non-current Property",
+            "Notes Purchase"
+        ],
+        correct: "Notes Payable"
+    },
+
+
+    {
+        question: "What does W stand for?",
+        answers: [
+            "Wages",
+            "Withdrawals",
+            "Work Expense",
+            "Warranty"
+        ],
+        correct: "Withdrawals"
+    },
+
+
+    {
+        question: "What does SER stand for?",
+        answers: [
+            "Service Revenue",
+            "Sales Expense Revenue",
+            "Service Expense Receivable",
+            "Sales Earnings Revenue"
+        ],
+        correct: "Service Revenue"
+    },
+
+
+    {
+        question: "What does COS stand for?",
+        answers: [
+            "Cost of Sales",
+            "Cost of Supplies",
+            "Cash on Sales",
+            "Cost of Services"
+        ],
+        correct: "Cost of Sales"
+    }
+
+],
+
+
+
+/* ==========================================
+   CLASSIFICATION CHALLENGE
+========================================== */
+
+classification: [
+
+    {
+        question: "How is Accounts Receivable classified?",
+        answers: [
+            "Asset",
+            "Liability",
+            "Revenue",
+            "Expense"
+        ],
+        correct: "Asset"
+    },
+
+
+    {
+        question: "How is Accounts Payable classified?",
+        answers: [
+            "Asset",
+            "Liability",
+            "Revenue",
+            "Expense"
+        ],
+        correct: "Liability"
+    },
+
+
+    {
+        question: "How is Capital classified?",
+        answers: [
+            "Asset",
+            "Liability",
+            "Owner's Equity",
+            "Expense"
+        ],
+        correct: "Owner's Equity"
+    },
+
+
+    {
+        question: "How is Service Revenue classified?",
+        answers: [
+            "Asset",
+            "Liability",
+            "Revenue",
+            "Expense"
+        ],
+        correct: "Revenue"
+    },
+
+
+    {
+        question: "How is Wages Expense classified?",
+        answers: [
+            "Asset",
+            "Liability",
+            "Owner's Equity",
+            "Expense"
+        ],
+        correct: "Expense"
+    },
+
+
+    {
+        question: "How is Land classified?",
+        answers: [
+            "Revenue",
+            "Expense",
+            "Asset",
+            "Liability"
+        ],
+        correct: "Asset"
+    },
+
+
+    {
+        question: "How is Notes Payable classified?",
+        answers: [
+            "Asset",
+            "Liability",
+            "Revenue",
+            "Expense"
+        ],
+        correct: "Liability"
+    },
+
+
+    {
+        question: "How are Withdrawals classified?",
+        answers: [
+            "Owner's Equity",
+            "Asset",
+            "Revenue",
+            "Liability"
+        ],
+        correct: "Owner's Equity"
+    }
+
+],
+
+
+
+/* ==========================================
+   ACCOUNTING EQUATION
+========================================== */
+
+equation: [
+
+    {
+        question:
+        "If Assets are ₱100,000 and Liabilities are ₱40,000, what is Owner's Equity?",
+
+        answers: [
+            "₱40,000",
+            "₱60,000",
+            "₱100,000",
+            "₱140,000"
+        ],
+
+        correct: "₱60,000"
+    },
+
+
+    {
+        question:
+        "If Assets are ₱250,000 and Owner's Equity is ₱150,000, what are Liabilities?",
+
+        answers: [
+            "₱50,000",
+            "₱100,000",
+            "₱150,000",
+            "₱400,000"
+        ],
+
+        correct: "₱100,000"
+    },
+
+
+    {
+        question:
+        "Which accounting equation is correct?",
+
+        answers: [
+            "Assets = Liabilities + Owner's Equity",
+            "Assets = Revenue + Expenses",
+            "Equity = Assets + Liabilities",
+            "Liabilities = Assets + Equity"
+        ],
+
+        correct:
+        "Assets = Liabilities + Owner's Equity"
+    },
+
+
+    {
+        question:
+        "If Liabilities are ₱80,000 and Equity is ₱120,000, what are Assets?",
+
+        answers: [
+            "₱40,000",
+            "₱80,000",
+            "₱120,000",
+            "₱200,000"
+        ],
+
+        correct: "₱200,000"
+    },
+
+
+    {
+        question:
+        "A business has Assets of ₱500,000 and Liabilities of ₱200,000. What is Equity?",
+
+        answers: [
+            "₱200,000",
+            "₱300,000",
+            "₱500,000",
+            "₱700,000"
+        ],
+
+        correct: "₱300,000"
+    },
+
+
+    {
+        question:
+        "If Equity is ₱90,000 and Liabilities are ₱30,000, what are Assets?",
+
+        answers: [
+            "₱60,000",
+            "₱90,000",
+            "₱120,000",
+            "₱150,000"
+        ],
+
+        correct: "₱120,000"
+    }
+
+],
+
+
+
+/* ==========================================
+   OWNER'S EQUITY
+========================================== */
+
+equity: [
+
+    {
+        question:
+        "What happens to Owner's Equity when the owner invests additional capital?",
+
+        answers: [
+            "It increases",
+            "It decreases",
+            "It has no effect",
+            "It becomes zero"
+        ],
+
+        correct: "It increases"
+    },
+
+
+    {
+        question:
+        "What happens to Owner's Equity when the owner makes a withdrawal?",
+
+        answers: [
+            "It increases",
+            "It decreases",
+            "It doubles",
+            "It has no effect"
+        ],
+
+        correct: "It decreases"
+    },
+
+
+    {
+        question:
+        "What is the effect of revenue on Owner's Equity?",
+
+        answers: [
+            "It increases Equity",
+            "It decreases Equity",
+            "It has no effect",
+            "It eliminates Equity"
+        ],
+
+        correct: "It increases Equity"
+    },
+
+
+    {
+        question:
+        "What is the effect of expenses on Owner's Equity?",
+
+        answers: [
+            "It increases Equity",
+            "It decreases Equity",
+            "It has no effect",
+            "It doubles Equity"
+        ],
+
+        correct: "It decreases Equity"
+    },
+
+
+    {
+        question:
+        "Which account normally decreases Owner's Equity?",
+
+        answers: [
+            "Service Revenue",
+            "Capital",
+            "Withdrawals",
+            "Sales Revenue"
+        ],
+
+        correct: "Withdrawals"
+    },
+
+
+    {
+        question:
+        "Which of the following increases Owner's Equity?",
+
+        answers: [
+            "Expenses",
+            "Withdrawals",
+            "Revenue",
+            "Accounts Payable"
+        ],
+
+        correct: "Revenue"
+    }
+
+]
+
+};
+
+
+
+/* ==========================================
+   GAME VARIABLES
+========================================== */
+
+let selectedGame = "";
+
+let playerName = "";
+
+let currentQuestion = 0;
+
+let score = 0;
+
+
+
+/* ==========================================
+   CHOOSE GAME
+========================================== */
+
+function chooseGame(gameType) {
+
+    selectedGame = gameType;
+
+    document
+        .getElementById("gameMenu")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("playerSection")
+        .classList.remove("hidden");
+
+}
+
+
+
+/* ==========================================
+   START GAME
+========================================== */
+
+function startGame() {
+
+    const nameInput =
+        document.getElementById("playerName");
+
+
+    if (nameInput.value.trim() === "") {
+
+        alert("Please enter your name.");
+
+        return;
+    }
+
+
+    playerName =
+        nameInput.value.trim();
+
+
+    currentQuestion = 0;
+
+    score = 0;
+
+
+    document
+        .getElementById("playerSection")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("questionSection")
+        .classList.remove("hidden");
+
+
+    showQuestion();
+
+}
+
+
+
+/* ==========================================
+   SHOW QUESTION
+========================================== */
+
+function showQuestion() {
+
+    const questions =
+        games[selectedGame];
+
+
+    const question =
+        questions[currentQuestion];
+
+
+    document
+        .getElementById("categoryName")
+        .textContent =
+        getGameName();
+
+
+    document
+        .getElementById("scoreDisplay")
+        .textContent =
+        "Score: " + score;
+
+
+    document
+        .getElementById("questionNumber")
+        .textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        questions.length;
+
+
+    document
+        .getElementById("questionText")
+        .textContent =
+        question.question;
+
+
+    const answerButtons =
+        document.getElementById(
+            "answerButtons"
+        );
+
+
+    answerButtons.innerHTML = "";
+
+
+    question.answers.forEach(answer => {
+
+        const button =
+            document.createElement("button");
+
+
+        button.textContent = answer;
+
+        button.className =
+            "answer-btn";
+
+
+        button.onclick = function() {
+
+            checkAnswer(
+                answer,
+                question.correct
+            );
+
+        };
+
+
+        answerButtons.appendChild(button);
+
+    });
+
+
+    document
+        .getElementById("feedback")
+        .textContent = "";
+
+
+    document
+        .getElementById("nextButton")
+        .classList.add("hidden");
+
+}
+
+
+
+/* ==========================================
+   CHECK ANSWER
+========================================== */
+
+function checkAnswer(
+    selectedAnswer,
+    correctAnswer
+) {
+
+    const buttons =
+        document.querySelectorAll(
+            "#answerButtons button"
+        );
+
+
+    buttons.forEach(button => {
+
+        button.disabled = true;
+
+
+        if (
+            button.textContent ===
+            correctAnswer
+        ) {
+
+            button.classList.add(
+                "correct"
+            );
+
+        }
+
+    });
+
+
+    if (
+        selectedAnswer ===
+        correctAnswer
+    ) {
+
+        score++;
+
+
+        document
+            .getElementById("feedback")
+            .textContent =
+            "Correct! 🎉";
+
+
+    } else {
+
+        document
+            .getElementById("feedback")
+            .textContent =
+            "Incorrect. The correct answer is " +
+            correctAnswer +
+            ".";
+
+
+        buttons.forEach(button => {
+
+            if (
+                button.textContent ===
+                selectedAnswer
+            ) {
+
+                button.classList.add(
+                    "incorrect"
+                );
+
+            }
+
+        });
+
+    }
+
+
+    document
+        .getElementById("scoreDisplay")
+        .textContent =
+        "Score: " + score;
+
+
+    document
+        .getElementById("nextButton")
+        .classList.remove("hidden");
+
+}
+
+
+
+/* ==========================================
+   NEXT QUESTION
+========================================== */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (
+        currentQuestion >=
+        games[selectedGame].length
+    ) {
+
+        finishGame();
+
+        return;
+    }
+
+
+    showQuestion();
+
+}
+
+
+
+/* ==========================================
+   FINISH GAME
+========================================== */
+
+function finishGame() {
+
+    const total =
+        games[selectedGame].length;
+
+
+    document
+        .getElementById("questionSection")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("resultSection")
+        .classList.remove("hidden");
+
+
+    document
+        .getElementById("resultText")
+        .textContent =
+
+        playerName +
+        ", you scored " +
+        score +
+        " out of " +
+        total +
+        "!";
+}
+
+
+
+/* ==========================================
+   GAME NAME
+========================================== */
+
+function getGameName() {
+
+    if (selectedGame === "symbol") {
+
+        return "🔤 Symbol Challenge";
+
+    }
+
+
+    if (
+        selectedGame ===
+        "classification"
+    ) {
+
+        return "🧩 Classification Challenge";
+
+    }
+
+
+    if (selectedGame === "equation") {
+
+        return "⚖️ Accounting Equation";
+
+    }
+
+
+    if (selectedGame === "equity") {
+
+        return "💚 Owner's Equity Challenge";
+
+    }
+
+}
+
+</script>
+
+</body>
+
+</html>

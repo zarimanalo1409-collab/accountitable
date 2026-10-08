@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accounti-Table Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================
+           QUIZ PAGE
+        ========================= */
+
+        .quiz-page {
+            min-height: 100vh;
+            padding: 45px 20px;
+        }
+
+        .quiz-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 30px;
+        }
+
+        .quiz-header .small-title {
+            color: var(--purple);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .quiz-header h1 {
+            color: var(--dark-purple);
+            font-size: 38px;
+            margin: 0 0 10px;
+        }
+
+        .quiz-header p {
+            color: var(--dark);
+            margin: 0;
+        }
+
+        /* START SCREEN */
+
+        .quiz-start-card {
+            max-width: 600px;
+            margin: 35px auto;
+            background: rgba(255, 250, 245, 0.95);
+            border-radius: 25px;
+            padding: 45px 35px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(79, 67, 85, 0.12);
+            border: 2px solid var(--lavender);
+        }
+
+        .quiz-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-start-card h2 {
+            color: var(--dark-purple);
+            margin-bottom: 10px;
+        }
+
+        .quiz-start-card p {
+            color: var(--dark);
+            margin-bottom: 25px;
+        }
+
+        .quiz-name-input {
+            width: 100%;
+            max-width: 420px;
+            padding: 14px 18px;
+            border: 2px solid var(--lavender);
+            border-radius: 14px;
+            outline: none;
+            font-size: 16px;
+            background: white;
+            color: var(--dark);
+            margin-bottom: 18px;
+        }
+
+        .quiz-name-input:focus {
+            border-color: var(--purple);
+        }
+
+        .start-quiz-btn,
+        .next-btn,
+        .try-again-btn {
+            border: none;
+            padding: 13px 25px;
+            border-radius: 13px;
+            background: var(--purple);
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .start-quiz-btn:hover,
+        .next-btn:hover,
+        .try-again-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* QUIZ CONTAINER */
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 35px auto;
+        }
+
+        .quiz-card {
+            background: rgba(255, 250, 245, 0.97);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(79, 67, 85, 0.12);
+            border: 2px solid var(--lavender);
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--dark-purple);
+            font-weight: 700;
+        }
+
+        /* PROGRESS */
+
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background: var(--lavender);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--purple);
+            border-radius: 20px;
+            transition: width 0.3s ease;
+        }
+
+        /* QUESTION */
+
+        .question-number {
+            color: var(--purple);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .question-text {
+            font-size: 24px;
+            line-height: 1.4;
+            color: var(--dark-purple);
+            margin-bottom: 25px;
+        }
+
+        /* ANSWERS */
+
+        .quiz-answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .answer-btn {
+            padding: 17px;
+            border: 2px solid var(--lavender);
+            border-radius: 15px;
+            background: white;
+            color: var(--dark);
+            font-size: 16px;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .answer-btn:hover:not(:disabled) {
+            border-color: var(--purple);
+            background: var(--lavender);
+            transform: translateY(-2px);
+        }
+
+        .answer-btn:disabled {
+            cursor: default;
+        }
+
+        .answer-btn.correct {
+            border-color: #72b987;
+            background: #dceee4;
+            color: #315d3e;
+            font-weight: 700;
+        }
+
+        .answer-btn.incorrect {
+            border-color: #d97878;
+            background: #f5dce5;
+            color: #793b3b;
+            font-weight: 700;
+        }
+
+        /* FEEDBACK */
+
+        .quiz-feedback {
+            min-height: 25px;
+            margin: 22px 0 15px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .next-wrapper {
+            text-align: right;
+        }
+
+        /* RESULT */
+
+        .quiz-result {
+            max-width: 600px;
+            margin: 35px auto;
+            background: rgba(255, 250, 245, 0.97);
+            border-radius: 25px;
+            padding: 45px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(79, 67, 85, 0.12);
+            border: 2px solid var(--lavender);
+        }
+
+        .result-trophy {
+            font-size: 65px;
+        }
+
+        .quiz-result h2 {
+            color: var(--dark-purple);
+            font-size: 30px;
+        }
+
+        .final-score {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--purple);
+        }
+
+        .score-message {
+            color: var(--dark);
+            margin-bottom: 25px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            .quiz-page {
+                padding: 30px 15px;
+            }
+
+            .quiz-header h1 {
+                font-size: 30px;
+            }
+
+            .quiz-card {
+                padding: 22px;
+            }
+
+            .quiz-answers {
+                grid-template-columns: 1fr;
+            }
+
+            .question-text {
+                font-size: 20px;
+            }
+
+            .quiz-info {
+                font-size: 14px;
+            }
+
+            .quiz-start-card {
+                padding: 35px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">📚 Accounti-Table</div>
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="accountitable.html">Accounti-Table</a>
+        <a href="games.html">Games</a>
+        <a href="quizzes.html">Quiz</a>
+    </nav>
+</header>
+
+
+<main class="quiz-page">
+
+    <!-- QUIZ HEADER -->
+
+    <section class="quiz-header">
+
+        <p class="small-title">ACCOUNTI-TABLE LEARNING HUB</p>
+
+        <h1>Accounting Quiz</h1>
+
+        <p>
+            Test what you learned from the Accounti-Table lessons.
+        </p>
+
+    </section>
+
+
+    <!-- START QUIZ -->
+
+    <section id="quizStart" class="quiz-start-card">
+
+        <div class="quiz-icon">📝</div>
+
+        <h2>Ready to Test Your Knowledge?</h2>
+
+        <p>
+            Enter your name and answer questions based on the
+            account titles and accounting lessons.
+        </p>
+
+        <input
+            type="text"
+            id="quizPlayerName"
+            class="quiz-name-input"
+            placeholder="Enter your name"
+            maxlength="30"
+        >
+
+        <br>
+
+        <button
+            class="start-quiz-btn"
+            onclick="startQuiz()"
+        >
+            Start Quiz →
+        </button>
+
+    </section>
+
+
+    <!-- QUIZ -->
+
+    <section id="quizSection" class="quiz-container hidden">
+
+        <div class="quiz-card">
+
+            <div class="quiz-info">
+
+                <span id="quizProgress">
+                    Question 1 of 10
+                </span>
+
+                <span id="quizScore">
+                    Score: 0
+                </span>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar"
+                ></div>
+
+            </div>
+
+
+            <p
+                id="questionNumber"
+                class="question-number"
+            >
+                QUESTION 1
+            </p>
+
+
+            <h2
+                id="quizQuestion"
+                class="question-text"
+            >
+                Question
+            </h2>
+
+
+            <div
+                id="quizAnswers"
+                class="quiz-answers"
+            ></div>
+
+
+            <p
+                id="quizFeedback"
+                class="quiz-feedback"
+            ></p>
+
+
+            <div class="next-wrapper">
+
+                <button
+                    id="quizNext"
+                    class="next-btn hidden"
+                    onclick="nextQuizQuestion()"
+                >
+                    Next →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULT -->
+
+    <section
+        id="quizResult"
+        class="quiz-result hidden"
+    >
+
+        <div class="result-trophy">🏆</div>
+
+        <h2>Quiz Complete!</h2>
+
+        <p
+            id="finalScore"
+            class="final-score"
+        ></p>
+
+        <p
+            id="scoreMessage"
+            class="score-message"
+        ></p>
+
+        <button
+            class="try-again-btn"
+            onclick="location.reload()"
+        >
+            Try Again
+        </button>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>© 2026 Accounti-Table Learning Hub</p>
+
+    <p>Learn • Practice • Understand • Apply</p>
+
+</footer>
+
+
+<script>
+
+/* ==========================================
+   ACCOUNTI-TABLE QUIZ QUESTIONS
+   BASED ON OUR LESSONS
+========================================== */
+
+const quizQuestions = [
+
+    {
+        question: "What does the account title \"L\" represent?",
+        answers: [
+            "Loan Payable",
+            "Land",
+            "Liability",
+            "Lease Expense"
+        ],
+        correct: "Land"
+    },
+
+    {
+        question: "Which account is classified as a current asset?",
+        answers: [
+            "Building",
+            "Land",
+            "Accounts Receivable",
+            "Mortgage Payable"
+        ],
+        correct: "Accounts Receivable"
+    },
+
+    {
+        question: "What does \"AP\" stand for in the Accounti-Table?",
+        answers: [
+            "Accounts Payable",
+            "Accounts Premium",
+            "Asset Payable",
+            "Accrued Property"
+        ],
+        correct: "Accounts Payable"
+    },
+
+    {
+        question: "Which account belongs to Owner's Equity?",
+        answers: [
+            "Accounts Receivable",
+            "Capital",
+            "Service Revenue",
+            "Utilities Expense"
+        ],
+        correct: "Capital"
+    },
+
+    {
+        question: "What does the account title \"W\" represent?",
+        answers: [
+            "Wages Expense",
+            "Withdrawals",
+            "Warranty Payable",
+            "Work Equipment"
+        ],
+        correct: "Withdrawals"
+    },
+
+    {
+        question: "Which of the following is a revenue account?",
+        answers: [
+            "Rent Expense",
+            "Sales Revenue",
+            "Accounts Payable",
+            "Office Supplies"
+        ],
+        correct: "Sales Revenue"
+    },
+
+    {
+        question: "What does \"DE\" represent?",
+        answers: [
+            "Dividend Equity",
+            "Depreciation Expense",
+            "Deferred Equity",
+            "Debt Expense"
+        ],
+        correct: "Depreciation Expense"
+    },
+
+    {
+        question: "Which account represents money owed by customers to the business?",
+        answers: [
+            "Accounts Payable",
+            "Accounts Receivable",
+            "Notes Payable",
+            "Capital"
+        ],
+        correct: "Accounts Receivable"
+    },
+
+    {
+        question: "Which of the following is classified as an expense?",
+        answers: [
+            "Commission Revenue",
+            "Service Revenue",
+            "Advertising Expense",
+            "Capital"
+        ],
+        correct: "Advertising Expense"
+    },
+
+    {
+        question: "Which accounting equation is taught in the Accounti-Table lesson?",
+        answers: [
+            "Assets = Liabilities + Owner's Equity",
+            "Assets = Revenue + Expenses",
+            "Liabilities = Assets + Revenue",
+            "Owner's Equity = Assets + Expenses"
+        ],
+        correct: "Assets = Liabilities + Owner's Equity"
+    }
+
+];
+
+
+let quizPlayer = "";
+let quizNumber = 0;
+let quizScore = 0;
+
+
+/* ==========================================
+   START QUIZ
+========================================== */
+
+function startQuiz() {
+
+    const name =
+        document
+        .getElementById("quizPlayerName")
+        .value
+        .trim();
+
+    if (name === "") {
+
+        alert("Please enter your name.");
+
+        return;
+    }
+
+    quizPlayer = name;
+
+    quizNumber = 0;
+
+    quizScore = 0;
+
+    document
+        .getElementById("quizStart")
+        .classList
+        .add("hidden");
+
+    document
+        .getElementById("quizSection")
+        .classList
+        .remove("hidden");
+
+    showQuizQuestion();
+}
+
+
+/* ==========================================
+   SHOW QUESTION
+========================================== */
+
+function showQuizQuestion() {
+
+    const current =
+        quizQuestions[quizNumber];
+
+
+    document
+        .getElementById("quizProgress")
+        .textContent =
+        "Question " +
+        (quizNumber + 1) +
+        " of " +
+        quizQuestions.length;
+
+
+    document
+        .getElementById("quizScore")
+        .textContent =
+        "Score: " +
+        quizScore;
+
+
+    document
+        .getElementById("questionNumber")
+        .textContent =
+        "QUESTION " +
+        (quizNumber + 1);
+
+
+    document
+        .getElementById("quizQuestion")
+        .textContent =
+        current.question;
+
+
+    const answerContainer =
+        document.getElementById(
+            "quizAnswers"
+        );
+
+
+    answerContainer.innerHTML = "";
+
+
+    current.answers.forEach(answer => {
+
+        const button =
+            document.createElement("button");
+
+
+        button.textContent = answer;
+
+        button.className = "answer-btn";
+
+
+        button.onclick = function() {
+
+            checkQuizAnswer(
+                answer,
+                current.correct
+            );
+
+        };
+
+
+        answerContainer.appendChild(button);
+
+    });
+
+
+    document
+        .getElementById("quizFeedback")
+        .textContent = "";
+
+
+    document
+        .getElementById("quizNext")
+        .classList
+        .add("hidden");
+
+
+    updateProgress();
+}
+
+
+/* ==========================================
+   CHECK ANSWER
+========================================== */
+
+function checkQuizAnswer(
+    selected,
+    correct
+) {
+
+    const buttons =
+        document.querySelectorAll(
+            "#quizAnswers button"
+        );
+
+
+    buttons.forEach(button => {
+
+        button.disabled = true;
+
+
+        if (
+            button.textContent === correct
+        ) {
+
+            button.classList.add(
+                "correct"
+            );
+
+        }
+
+    });
+
+
+    if (selected === correct) {
+
+        quizScore++;
+
+
+        document
+            .getElementById("quizFeedback")
+            .textContent =
+            "Correct! Great job! 🎉";
+
+    } else {
+
+        document
+            .getElementById("quizFeedback")
+            .textContent =
+            "Not quite. The correct answer is: " +
+            correct;
+
+        buttons.forEach(button => {
+
+            if (
+                button.textContent === selected
+            ) {
+
+                button.classList.add(
+                    "incorrect"
+                );
+
+            }
+
+        });
+
+    }
+
+
+    document
+        .getElementById("quizScore")
+        .textContent =
+        "Score: " +
+        quizScore;
+
+
+    document
+        .getElementById("quizNext")
+        .classList
+        .remove("hidden");
+}
+
+
+/* ==========================================
+   NEXT QUESTION
+========================================== */
+
+function nextQuizQuestion() {
+
+    quizNumber++;
+
+
+    if (
+        quizNumber >=
+        quizQuestions.length
+    ) {
+
+        finishQuiz();
+
+        return;
+    }
+
+
+    showQuizQuestion();
+}
+
+
+/* ==========================================
+   PROGRESS BAR
+========================================== */
+
+function updateProgress() {
+
+    const percentage =
+        ((quizNumber + 1) /
+        quizQuestions.length) * 100;
+
+
+    document
+        .getElementById("progressBar")
+        .style
+        .width =
+        percentage + "%";
+}
+
+
+/* ==========================================
+   FINISH QUIZ
+========================================== */
+
+function finishQuiz() {
+
+    document
+        .getElementById("quizSection")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("quizResult")
+        .classList
+        .remove("hidden");
+
+
+    document
+        .getElementById("finalScore")
+        .textContent =
+        quizPlayer +
+        ", your final score is " +
+        quizScore +
+        " out of " +
+        quizQuestions.length +
+        ".";
+
+
+    const percentage =
+        (quizScore /
+        quizQuestions.length) * 100;
+
+
+    let message = "";
+
+
+    if (percentage === 100) {
+
+        message =
+            "Perfect score! You really know your Accounti-Table! 🏆";
+
+    } else if (percentage >= 80) {
+
+        message =
+            "Excellent! You have a strong understanding of the lessons. 🌟";
+
+    } else if (percentage >= 60) {
+
+        message =
+            "Good job! Keep reviewing the Accounti-Table lessons. 💪";
+
+    } else {
+
+        message =
+            "Keep practicing! Review the account titles and classifications again. 📚";
+
+    }
+
+
+    document
+        .getElementById("scoreMessage")
+        .textContent =
+        message;
+
+
+    saveQuizScore();
+}
+
+
+/* ==========================================
+   SAVE LEADERBOARD SCORE
+========================================== */
+
+function saveQuizScore() {
+
+    let leaderboard =
+        JSON.parse(
+            localStorage.getItem(
+                "accountiLeaderboard"
+            )
+        ) || [];
+
+
+    leaderboard.push({
+
+        name: quizPlayer,
+
+        score: quizScore,
+
+        total: quizQuestions.length,
+
+        activity: "Quiz"
+
+    });
+
+
+    leaderboard.sort(
+        (a, b) =>
+        b.score - a.score
+    );
+
+
+    leaderboard =
+        leaderboard.slice(0, 10);
+
+
+    localStorage.setItem(
+        "accountiLeaderboard",
+        JSON.stringify(leaderboard)
+    );
+}
+
+</script>
+
+</body>
+</html>

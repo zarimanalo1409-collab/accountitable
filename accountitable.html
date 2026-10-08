@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Accounti-Table</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        📊 Accounti-Table
+    </div>
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="accountitable.html">Accounti-Table</a>
+        <a href="games.html">Games</a>
+        <a href="quizzes.html">Quiz</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+<!-- PAGE TITLE -->
+
+<section class="page-heading">
+
+    <p>CLASSIFY • IDENTIFY • UNDERSTAND • APPLY</p>
+
+    <h1>Accounti-Table</h1>
+
+    <p>
+        Click an account abbreviation to see its full account title,
+        meaning, definition, and classification.
+    </p>
+
+</section>
+
+
+<!-- COLOR KEY -->
+
+<section class="reference-section">
+
+    <h2>Color Key</h2>
+
+    <div class="color-key">
+
+        <div>
+            <span class="color-box current-assets"></span>
+            <p>Current Assets</p>
+        </div>
+
+        <div>
+            <span class="color-box noncurrent-assets"></span>
+            <p>Non-current Assets</p>
+        </div>
+
+        <div>
+            <span class="color-box liabilities"></span>
+            <p>Liabilities</p>
+        </div>
+
+        <div>
+            <span class="color-box noncurrent-liabilities"></span>
+            <p>Non-current Liabilities</p>
+        </div>
+
+        <div>
+            <span class="color-box equity"></span>
+            <p>Owner's Equity</p>
+        </div>
+
+        <div>
+            <span class="color-box revenue"></span>
+            <p>Revenue / Income</p>
+        </div>
+
+        <div>
+            <span class="color-box expenses"></span>
+            <p>Expenses</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ACCOUNT TABLE -->
+
+<section class="table-section">
+
+    <div class="account-table">
+
+
+        <!-- =========================
+             NON-CURRENT ASSETS
+        ========================== -->
+
+        <div class="account-card noncurrent-assets"
+             data-code="L"
+             data-title="Land"
+             data-class="Non-current Asset"
+             data-definition="Land is a property owned by a business. It may be used for business operations or held as an investment.">
+            L
+        </div>
+
+
+        <div class="account-card noncurrent-assets"
+             data-code="B"
+             data-title="Building"
+             data-class="Non-current Asset"
+             data-definition="A building is a structure owned and used by a business for its operations.">
+            B
+        </div>
+
+
+        <div class="account-card noncurrent-assets"
+             data-code="MAE"
+             data-title="Machinery and Equipment"
+             data-class="Non-current Asset"
+             data-definition="Machinery and equipment are long-term resources used by a business in producing goods or providing services.">
+            MAE
+        </div>
+
+
+        <div class="account-card noncurrent-assets"
+             data-code="OE"
+             data-title="Office Equipment"
+             data-class="Non-current Asset"
+             data-definition="Office equipment consists of long-term equipment used in the daily administrative operations of a business.">
+            OE
+        </div>
+
+
+        <div class="account-card noncurrent-assets"
+             data-code="FAF"
+             data-title="Furniture and Fixture"
+             data-class="Non-current Asset"
+             data-definition="Furniture and fixtures are long-term physical assets used in the operation and furnishing of a business.">
+            FAF
+        </div>
+
+
+        <div class="account-card noncurrent-assets"
+             data-code="TE"
+             data-title="Transportation Equipment"
+             data-class="Non-current Asset"
+             data-definition="Transportation equipment includes vehicles and other equipment used to transport people or goods for business purposes.">
+            TE
+        </div>
+
+
+        <div class="account-card noncurrent-assets"
+             data-code="AD"
+             data-title="Accumulated Depreciation"
+             data-class="Contra Asset"
+             data-definition="Accumulated depreciation represents the total depreciation charged against a long-term asset since it was acquired.">
+            AD
+        </div>
+
+
+
+        <!-- =========================
+             CURRENT ASSETS
+        ========================== -->
+
+        <div class="account-card current-assets"
+             data-code="COH"
+             data-title="Cash on Hand"
+             data-class="Current Asset"
+             data-definition="Cash on hand refers to physical money available in the business, such as bills and coins.">
+            COH
+        </div>
+
+
+        <div class="account-card current-assets"
+             data-code="COB"
+             data-title="Cash on Bank"
+             data-class="Current Asset"
+             data-definition="Cash on bank refers to money deposited in a bank account that is available for the business to use.">
+            COB
+        </div>
+
+
+        <div class="account-card current-assets"
+             data-code="PCF"
+             data-title="Petty Cash Fund"
+             data-class="Current Asset"
+             data-definition="Petty cash is a small amount of money kept by a business for minor and immediate expenses.">
+            PCF
+        </div>
+
+
+        <div class="account-card current-assets"
+             data-code="CE"
+             data-title="Cash Equivalent"
+             data-class="Current Asset"
+             data-definition="Cash equivalents are short-term, highly liquid investments that can easily be converted into cash.">
+            CE
+        </div>
+
+
+        <div class="account-card current-assets"
+             data-code="STI"
+             data-title="Short-Term Investment"
+             data-class="Current Asset"
+             data-definition="Short-term investments are investments expected to be converted into cash or used within a short period, usually within one year.">
+            STI
+        </div>
+
+
+        <div class="account-card current-assets"
+             data-code="AR"
+             data-title="Accounts Receivable"
+             data-class="Current Asset"
+             data-definition="Accounts receivable represents money owed to the business by customers who purchased goods or services on credit.">
+            AR
+        </div>
+
+
+        <div class="account-card current-assets"
+             data-code="ABD"
+             data-title="Allowance for Bad Debts"
+             data-class="Contra Asset"
+             data-definition="Allowance for bad debts is an estimate of the amount of accounts receivable that may not be collected.">
+            ABD
+        </div>
+
+
+        <div class="account-card current-assets"
+             data-code="NR"
+             data-title="Notes Receivable"
+             data-class="Current Asset"
+             data-definition="Notes receivable represents amounts owed to the business supported by a written promise to pay.">
+            NR
+        </div>
+
+
+        <div class="account-card current-assets"
+             data-code="MI"
+             data-title="Merchandise Inventory"
+             data-class="Current Asset"
+             data-definition="Merchandise inventory consists of goods purchased by a business for resale to customers.">
+            MI
+        </div>
+
+
+        <div class="account-card current-assets"
+             data-code="OS"
+             data-title="Office Supplies"
+             data-class="Current Asset"
+             data-definition="Office supplies are materials used in the daily administrative activities of a business.">
+            OS
+        </div>
+
+
+        <div class="account-card current-assets"
+             data-code="PE"
+             data-title="Prepaid Expense"
+             data-class="Current Asset"
+             data-definition="Prepaid expenses are payments made in advance for goods or services that will benefit the business in the future.">
+            PE
+        </div>
+
+
+
+        <!-- =========================
+             LIABILITIES
+        ========================== -->
+
+        <div class="account-card noncurrent-liabilities"
+             data-code="MP"
+             data-title="Mortgage Payable"
+             data-class="Non-current Liability"
+             data-definition="Mortgage payable is a long-term debt secured by property that the business must pay in the future.">
+            MP
+        </div>
+
+
+        <div class="account-card liabilities"
+             data-code="AP"
+             data-title="Accounts Payable"
+             data-class="Current Liability"
+             data-definition="Accounts payable represents amounts the business owes to suppliers for goods or services purchased on credit.">
+            AP
+        </div>
+
+
+        <div class="account-card liabilities"
+             data-code="NP"
+             data-title="Notes Payable"
+             data-class="Liability"
+             data-definition="Notes payable represents a written promise by the business to pay a specific amount of money at a future date.">
+            NP
+        </div>
+
+
+        <div class="account-card noncurrent-liabilities"
+             data-code="BP"
+             data-title="Bonds Payable"
+             data-class="Non-current Liability"
+             data-definition="Bonds payable represent long-term amounts borrowed by a business through the issuance of bonds.">
+            BP
+        </div>
+
+
+        <div class="account-card liabilities"
+             data-code="LP"
+             data-title="Loan Payable"
+             data-class="Liability"
+             data-definition="Loan payable represents money borrowed by the business that must be repaid to a lender.">
+            LP
+        </div>
+
+
+        <div class="account-card liabilities"
+             data-code="AE"
+             data-title="Accrued Expense"
+             data-class="Current Liability"
+             data-definition="Accrued expenses are expenses already incurred by the business but not yet paid.">
+            AE
+        </div>
+
+
+        <div class="account-card liabilities"
+             data-code="UI"
+             data-title="Unearned Income"
+             data-class="Liability"
+             data-definition="Unearned income is money received by a business before the related goods or services have been provided.">
+            UI
+        </div>
+
+
+
+        <!-- =========================
+             OWNER'S EQUITY
+        ========================== -->
+
+        <div class="account-card equity"
+             data-code="C"
+             data-title="Capital"
+             data-class="Owner's Equity"
+             data-definition="Capital represents the owner's investment or claim in the business.">
+            C
+        </div>
+
+
+        <div class="account-card equity"
+             data-code="CS"
+             data-title="Common Stock"
+             data-class="Owner's Equity"
+             data-definition="Common stock represents ownership in a corporation and gives shareholders a claim on the company's net assets.">
+            CS
+        </div>
+
+
+        <div class="account-card equity"
+             data-code="W"
+             data-title="Withdrawals"
+             data-class="Owner's Equity"
+             data-definition="Withdrawals are amounts or assets taken by the owner for personal use. Withdrawals decrease owner's equity.">
+            W
+        </div>
+
+
+        <div class="account-card equity"
+             data-code="PS"
+             data-title="Preferred Stock"
+             data-class="Owner's Equity"
+             data-definition="Preferred stock represents ownership in a corporation and generally gives shareholders preference over common shareholders in certain claims.">
+            PS
+        </div>
+
+
+
+        <!-- =========================
+             REVENUE / INCOME
+        ========================== -->
+
+        <div class="account-card revenue"
+             data-code="SER"
+             data-title="Service Revenue"
+             data-class="Revenue / Income"
+             data-definition="Service revenue is income earned by providing services to customers.">
+            SER
+        </div>
+
+
+        <div class="account-card revenue"
+             data-code="SR"
+             data-title="Sales Revenue"
+             data-class="Revenue / Income"
+             data-definition="Sales revenue is income earned from selling goods or merchandise to customers.">
+            SR
+        </div>
+
+
+        <div class="account-card revenue"
+             data-code="PF"
+             data-title="Professional Fees"
+             data-class="Revenue / Income"
+             data-definition="Professional fees are amounts earned by professionals for services they provide to clients.">
+            PF
+        </div>
+
+
+        <div class="account-card revenue"
+             data-code="RI"
+             data-title="Rent Income"
+             data-class="Revenue / Income"
+             data-definition="Rent income is money earned by a business from allowing others to use its property.">
+            RI
+        </div>
+
+
+        <div class="account-card revenue"
+             data-code="DI"
+             data-title="Dividend Income"
+             data-class="Revenue / Income"
+             data-definition="Dividend income is income received from investments in shares of another company.">
+            DI
+        </div>
+
+
+        <div class="account-card revenue"
+             data-code="GSA"
+             data-title="Gain on Sales of Assets"
+             data-class="Revenue / Income"
+             data-definition="Gain on sale of assets occurs when a long-term asset is sold for more than its recorded book value.">
+            GSA
+        </div>
+
+
+        <div class="account-card revenue"
+             data-code="CR"
+             data-title="Commission Revenue"
+             data-class="Revenue / Income"
+             data-definition="Commission revenue is income earned for providing services or facilitating transactions for another party.">
+            CR
+        </div>
+
+
+
+        <!-- =========================
+             EXPENSES
+        ========================== -->
+
+        <div class="account-card expenses"
+             data-code="COS"
+             data-title="Cost of Sales"
+             data-class="Expense"
+             data-definition="Cost of sales represents the cost of merchandise or goods that have been sold to customers.">
+            COS
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="WE"
+             data-title="Wages Expense"
+             data-class="Expense"
+             data-definition="Wages expense represents the cost of employee labor paid or owed by the business.">
+            WE
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="ISE"
+             data-title="Insurance Expense"
+             data-class="Expense"
+             data-definition="Insurance expense is the cost incurred for insurance coverage during an accounting period.">
+            ISE
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="DE"
+             data-title="Depreciation Expense"
+             data-class="Expense"
+             data-definition="Depreciation expense is the portion of the cost of a long-term asset allocated as an expense over its useful life.">
+            DE
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="DAE"
+             data-title="Doubtful Account Expense"
+             data-class="Expense"
+             data-definition="Doubtful account expense represents the estimated amount of credit sales that may not be collected.">
+            DAE
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="ADE"
+             data-title="Advertising Expense"
+             data-class="Expense"
+             data-definition="Advertising expense is the cost of promoting the products, services, or business to customers.">
+            ADE
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="UE"
+             data-title="Utilities Expense"
+             data-class="Expense"
+             data-definition="Utilities expense represents costs for services such as electricity, water, internet, or similar utilities used by the business.">
+            UE
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="IE"
+             data-title="Interest Expense"
+             data-class="Expense"
+             data-definition="Interest expense is the cost incurred from borrowing money.">
+            IE
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="TAL"
+             data-title="Taxes and License Expense"
+             data-class="Expense"
+             data-definition="Taxes and license expense represents costs paid for taxes, permits, and business licenses.">
+            TAL
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="RE"
+             data-title="Rent Expense"
+             data-class="Expense"
+             data-definition="Rent expense is the cost of using property or facilities owned by another party.">
+            RE
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="RME"
+             data-title="Repairs and Maintenance Expense"
+             data-class="Expense"
+             data-definition="Repairs and maintenance expense represents costs incurred to maintain or repair business property and equipment.">
+            RME
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="SE"
+             data-title="Supplies Expense"
+             data-class="Expense"
+             data-definition="Supplies expense represents the cost of supplies that have been used during the accounting period.">
+            SE
+        </div>
+
+
+        <div class="account-card expenses"
+             data-code="ME"
+             data-title="Miscellaneous Expense"
+             data-class="Expense"
+             data-definition="Miscellaneous expense represents small or other expenses that do not belong to a specific expense category.">
+            ME
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- OWNER'S EQUITY EFFECT -->
+
+<section class="equity-effect">
+
+    <div class="section-title">
+
+        <p>OWNER'S EQUITY</p>
+
+        <h2>How Owner's Equity is Affected</h2>
+
+    </div>
+
+
+    <div class="effect-grid">
+
+        <div class="effect increase">
+
+            <span>↑</span>
+
+            <strong>Capital</strong>
+
+            <small>
+                Increases Owner's Equity
+            </small>
+
+        </div>
+
+
+        <div class="effect increase">
+
+            <span>↑</span>
+
+            <strong>Revenue / Income</strong>
+
+            <small>
+                Increases Owner's Equity
+            </small>
+
+        </div>
+
+
+        <div class="effect decrease">
+
+            <span>↓</span>
+
+            <strong>Withdrawals</strong>
+
+            <small>
+                Decreases Owner's Equity
+            </small>
+
+        </div>
+
+
+        <div class="effect decrease">
+
+            <span>↓</span>
+
+            <strong>Expenses</strong>
+
+            <small>
+                Decreases Owner's Equity
+            </small>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =========================
+     ACCOUNT INFORMATION POPUP
+========================== -->
+
+<div id="accountModal" class="modal">
+
+    <div class="modal-content">
+
+        <button class="close-modal">
+            &times;
+        </button>
+
+
+        <div class="modal-icon">
+            📚
+        </div>
+
+
+        <p>ACCOUNT ABBREVIATION</p>
+
+        <h2 id="modalCode">
+            L
+        </h2>
+
+
+        <h3 id="modalTitle">
+            Land
+        </h3>
+
+
+        <div class="modal-divider"></div>
+
+
+        <div class="modal-info">
+
+            <strong>Meaning</strong>
+
+            <p id="modalDefinition">
+                Land is a property owned by a business.
+            </p>
+
+        </div>
+
+
+        <div class="modal-info">
+
+            <strong>Classification</strong>
+
+            <span id="modalClass">
+                Non-current Asset
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<footer>
+
+    <p>
+        © 2026 Accounti-Table Learning Hub
+    </p>
+
+    <p>
+        Learn • Practice • Understand • Apply
+    </p>
+
+</footer>
+
+
+
+<script>
+
+    /*
+    ==========================================
+    ACCOUNT BOX CLICK FUNCTION
+    ==========================================
+    */
+
+    const accountCards =
+        document.querySelectorAll(".account-card");
+
+    const modal =
+        document.getElementById("accountModal");
+
+    const modalCode =
+        document.getElementById("modalCode");
+
+    const modalTitle =
+        document.getElementById("modalTitle");
+
+    const modalDefinition =
+        document.getElementById("modalDefinition");
+
+    const modalClass =
+        document.getElementById("modalClass");
+
+    const closeModal =
+        document.querySelector(".close-modal");
+
+
+    accountCards.forEach(card => {
+
+        card.addEventListener("click", function () {
+
+            /*
+            Get information from
+            the clicked account box.
+            */
+
+            const code =
+                this.getAttribute("data-code");
+
+            const title =
+                this.getAttribute("data-title");
+
+            const definition =
+                this.getAttribute("data-definition");
+
+            const classification =
+                this.getAttribute("data-class");
+
+
+            /*
+            Put the information
+            inside the popup.
+            */
+
+            modalCode.textContent = code;
+
+            modalTitle.textContent = title;
+
+            modalDefinition.textContent =
+                definition;
+
+            modalClass.textContent =
+                classification;
+
+
+            /*
+            Show popup.
+            */
+
+            modal.classList.add("show");
+
+        });
+
+    });
+
+
+    /*
+    CLOSE POPUP
+    */
+
+    closeModal.addEventListener("click", function () {
+
+        modal.classList.remove("show");
+
+    });
+
+
+    /*
+    CLOSE WHEN CLICKING
+    OUTSIDE THE POPUP
+    */
+
+    modal.addEventListener("click", function (event) {
+
+        if (event.target === modal) {
+
+            modal.classList.remove("show");
+
+        }
+
+    });
+
+
+    /*
+    CLOSE USING ESC KEY
+    */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            modal.classList.remove("show");
+
+        }
+
+    });
+
+</script>
+
+
+</body>
+</html>
